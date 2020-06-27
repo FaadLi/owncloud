@@ -11,7 +11,7 @@
 /* global Files */
 
 (function() {
-
+    /*class="displayname">{{uploadLabel}}  upload label nama dari Upload*/
     var TEMPLATE_MENU =
         '<ul>' +
         '<li>' +
@@ -89,6 +89,9 @@
          * @param {Object} event event object
          */
         _onClickAction: function(event) {
+
+            console.log('masuk lagi');
+
             var $target = $(event.target);
             if (!$target.hasClass('menuitem')) {
                 $target = $target.closest('.menuitem');
@@ -219,6 +222,7 @@
          * Renders the menu with the currently set items
          */
         render: function() {
+            console.log('masuk menu upload');
             this.$el.html(this.template({
                 uploadMaxHumanFileSize: 'TODO',
                 uploadLabel: t('files', 'Upload'),

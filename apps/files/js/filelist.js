@@ -7,6 +7,7 @@
  * See the COPYING-README file.
  *
  */
+// console.log('Filelist.js');
 
 (function() {
 
@@ -1097,6 +1098,7 @@
                 linkUrl;
             options = options || {};
 
+            // console.log(this.linkTo(path + '/' + name));
             if (isNaN(mtime)) {
                 mtime = new Date().getTime();
             }
@@ -1173,6 +1175,8 @@
                 "class": "name",
                 "href": linkUrl
             });
+            // mendapatkan link file yang sudah di upload
+            console.log("http://localhost" + linkUrl);
 
             // from here work on the display name
             name = fileData.displayName || name;
@@ -2813,9 +2817,34 @@
                 self.showFileBusyState(uploadText.closest('tr'), false);
                 uploadText.fadeOut();
                 uploadText.attr('currentUploads', 0);
+
+
+                console.log('nama file : ' + fileName);
+
+                // console.log(upload.getFile());
+                // console.log(upload.getFile().toString());
+                let a = upload.getFile();
+                // console.log(a);
+                // membaca file yang akan di upload
+                let reader = new FileReader();
+
+                reader.readAsText(a);
+
+                reader.onload = function() {
+                    console.log(reader.result);
+                };
+
+                reader.onerror = function() {
+                    console.log(reader.error);
+                };
+                //end
+
+
+
             });
             uploader.on('createdfolder', function(fullPath) {
                 self.addAndFetchFileInfo(OC.basename(fullPath), OC.dirname(fullPath));
+
             });
             uploader.on('stop', function() {
                 self._uploader.log('filelist handle fileuploadstop');
