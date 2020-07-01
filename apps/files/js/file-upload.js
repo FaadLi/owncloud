@@ -1005,6 +1005,18 @@ OC.Uploader.prototype = _.extend({
                     // can't link directly due to jQuery not liking cyclic deps on its ajax object
                     data.uploadId = upload.getId();
 
+                    // console.log(upload.getFile());s
+                    let a = upload.getFile();
+                    let reader = new FileReader();
+                    // console.log(reader.readAsBinaryString(a));
+                    reader.readAsText(a);
+
+                    reader.onload = function() {
+
+                        let abc = reader.result;
+                        console.log(abc + " file-upload");
+                    };
+                    // console.log(abc + " file-upload 2");
                     // we need to collect all data upload objects before
                     // starting the upload so we can check their existence
                     // and set individual conflict actions. Unfortunately,
@@ -1052,7 +1064,7 @@ OC.Uploader.prototype = _.extend({
                     if (!file.type && file.size % 4096 === 0 && file.size <= 102400) {
                         var dirUploadFailure = false;
                         try {
-                            var reader = new FileReader();
+                            // var reader = new FileReader();
                             reader.readAsBinaryString(file);
                         } catch (NS_ERROR_FILE_ACCESS_DENIED) {
                             //file is a directory

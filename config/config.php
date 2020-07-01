@@ -4,10 +4,10 @@ $CONFIG = array (
   'secret' => 't9f0woPDPCS8mfvP1/V1FmnBQPn0jY6ErZfwWPdPinUHxEno',
   'trusted_domains' => 
   array (
-    0 => '192.168.0.109',
+    0 => '192.168.0.106',
   ),
   'datadirectory' => '/var/www/html/owncloud/data',
-  'overwrite.cli.url' => 'http://192.168.0.109/owncloud',
+  'overwrite.cli.url' => 'http://192.168.0.106/owncloud',
   'dbtype' => 'mysql',
   'version' => '10.2.1.4',
   'dbname' => 'owncloud2',
@@ -20,7 +20,7 @@ $CONFIG = array (
   'logtimezone' => 'UTC',
   'apps_paths' => 
   array (
-    0 => 
+    0 =>
     array (
       'path' => '/var/www/html/owncloud/apps',
       'url' => '/apps',

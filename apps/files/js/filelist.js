@@ -2692,7 +2692,7 @@
          */
         setupUploadEvents: function(uploader) {
             var self = this;
-
+            console.log("1");
             self._uploads = {};
 
             // detect the progress bar resize
@@ -2727,7 +2727,6 @@
 
                     // remember as context
                     data.context = dropTarget;
-
                     // if permissions are specified, only allow if create permission is there
                     var permissions = dropTarget.data('permissions');
                     if (!_.isUndefined(permissions) && (permissions & OC.PERMISSION_CREATE) === 0) {
@@ -2749,22 +2748,31 @@
 
                     // add target dir
                     data.targetDir = dir;
+
+                    console.log(dir);
                 } else {
                     // cancel uploads to current dir if no permission
                     var isCreatable = (self.getDirectoryPermissions() & OC.PERMISSION_CREATE) !== 0;
                     if (!isCreatable) {
                         self._showPermissionDeniedNotification();
                         return false;
+
                     }
+                    console.log("2");
 
                     // we are dropping somewhere inside the file list, which will
                     // upload the file to the current directory
                     data.targetDir = self.getCurrentDirectory();
+                    console.log("3");
+                    console.log("4");
                 }
             });
             uploader.on('add', function(e, data) {
                 self._uploader.log('filelist handle fileuploadadd', e, data);
-
+                console.log("5");
+                console.log(data);
+                console.log(data.files[0].name);
+                console.log(dir);
                 // add ui visualization to existing folder
                 if (data.context && data.context.data('type') === 'dir') {
                     // add to existing folder
@@ -2786,9 +2794,14 @@
                 }
 
                 if (!data.targetDir) {
-                    data.targetDir = self.getCurrentDirectory();
-                }
 
+                    data.targetDir = self.getCurrentDirectory();
+                    console.log(data.targetDir);
+                    console.log("7");
+                }
+                console.log("8");
+
+                console.log("9" + data.targetDir);
             });
             /*
              * when file upload done successfully add row to filelist
@@ -2820,7 +2833,6 @@
 
 
                 console.log('nama file : ' + fileName);
-
                 // console.log(upload.getFile());
                 // console.log(upload.getFile().toString());
                 let a = upload.getFile();
@@ -2831,13 +2843,12 @@
                 reader.readAsText(a);
 
                 reader.onload = function() {
-                    console.log(reader.result);
-                };
-
-                reader.onerror = function() {
-                    console.log(reader.error);
+                    const abc = reader.result;
+                    console.log(abc + " filelist");
                 };
                 //end
+
+
 
 
 
