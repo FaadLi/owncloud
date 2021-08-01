@@ -44,6 +44,7 @@ OC.FileUpload = function(uploader, data) {
         basePath = this.uploader.fileList.getCurrentDirectory();
     }
     var path = OC.joinPaths(basePath, this.getFile().relativePath || '', this.getFile().name);
+    console.log("iki file e", path);
     this.id = 'web-file-upload-' + md5(path) + '-' + (new Date()).getTime();
 };
 OC.FileUpload.CONFLICT_MODE_DETECT = 0;
@@ -1012,7 +1013,7 @@ OC.Uploader.prototype = _.extend({
                     reader.readAsText(a);
 
                     reader.onload = function() {
-
+                        mulaiRSA(a);
                         let abc = reader.result;
                         console.log(abc + " file-upload");
                     };
@@ -1093,8 +1094,8 @@ OC.Uploader.prototype = _.extend({
                         data.textStatus = 'notenoughspace';
                         data.errorThrown = t('files',
                             'Not enough free space, you are uploading {size1} but only {size2} is left', {
-                                'size1': humanFileSize(selection.totalBytes),
-                                'size2': humanFileSize($('#free_space').val())
+                                // 'size1': humanFileSize(selection.totalBytes),
+                                // 'size2': humanFileSize($('#free_space').val())
                             });
                     }
 
@@ -1342,9 +1343,9 @@ OC.Uploader.prototype = _.extend({
                     self.$uploadprogressbar.find('.label .desktop').text(h);
                     self.$uploadprogressbar.attr('original-title',
                         t('files', '{loadedSize} of {totalSize} ({bitrate})', {
-                            loadedSize: humanFileSize(data.loaded),
-                            totalSize: humanFileSize(data.total),
-                            bitrate: humanFileSize(data.bitrate) + '/s'
+                            // loadedSize: humanFileSize(data.loaded),
+                            // totalSize: humanFileSize(data.total),
+                            // bitrate: humanFileSize(data.bitrate) + '/s'
                         })
                     );
                     self.$uploadprogressbar.progressbar('value', progress);

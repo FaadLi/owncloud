@@ -319,7 +319,7 @@
 
             this.updateSearch();
 
-            this.$fileList.on('click', 'td.filename>a.name, td.filesize, td.date', _.bind(this._onClickFile, this));
+            this.$fileList.on('click', 'td.filename>a.name, td.date', _.bind(this._onClickFile, this));
 
             this.$fileList.on('change', 'td.filename>.selectCheckBox', _.bind(this._onClickFileCheckbox, this));
             this.$el.on('urlChanged', _.bind(this._onUrlChanged, this));
@@ -1219,14 +1219,14 @@
 
             // size column
             if (typeof(fileData.size) !== 'undefined' && fileData.size >= 0) {
-                simpleSize = humanFileSize(parseInt(fileData.size, 10), true);
+                // simpleSize = humanFileSize(parseInt(fileData.size, 10), true);
                 sizeColor = Math.round(160 - Math.pow((fileData.size / (1024 * 1024)), 2));
             } else {
                 simpleSize = t('files', 'Pending');
             }
 
             td = $('<td></td>').attr({
-                "class": "filesize",
+                // "class": "filesize",
                 "style": 'color:rgb(' + sizeColor + ',' + sizeColor + ',' + sizeColor + ')'
             }).text(simpleSize);
             tr.append(td);
@@ -1255,7 +1255,7 @@
                 }).text(text)
                 .tooltip({ placement: 'top' })
             );
-            tr.find('.filesize').text(simpleSize);
+            // tr.find('.filesize').text(simpleSize);
             tr.append(td);
             return tr;
         },
@@ -1952,7 +1952,7 @@
                             var oldSize = oldFile.data('size');
                             var newSize = oldSize + newFile.data('size');
                             oldFile.data('size', newSize);
-                            oldFile.find('td.filesize').text(OC.Util.humanFileSize(newSize));
+                            // oldFile.find('td.filesize').text(OC.Util.humanFileSize(newSize));
 
                             // TODO: also update entry in FileList.files
                             self.remove(fileName);

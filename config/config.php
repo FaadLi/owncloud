@@ -4,10 +4,10 @@ $CONFIG = array (
   'secret' => 't9f0woPDPCS8mfvP1/V1FmnBQPn0jY6ErZfwWPdPinUHxEno',
   'trusted_domains' => 
   array (
-    0 => '192.168.0.106',
+    0 => '192.168.84.104',
   ),
   'datadirectory' => '/var/www/html/owncloud/data',
-  'overwrite.cli.url' => 'http://192.168.0.106/owncloud',
+  'overwrite.cli.url' => 'http://192.168.84.104/owncloud',
   'dbtype' => 'mysql',
   'version' => '10.2.1.4',
   'dbname' => 'owncloud2',
